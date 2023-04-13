@@ -17,6 +17,7 @@ app.get("/add", async (req: Request, res: Response) => {
     });
     res.status(httpStatus.CREATED).send(user);
   } catch (error) {
+    console.log(error);
     res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
   }
 });
@@ -26,6 +27,7 @@ app.get("/all", async (req: Request, res: Response) => {
     const users = await prisma.user.findMany({});
     res.send(users);
   } catch (error) {
+    console.log(error);
     res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
   }
 })
